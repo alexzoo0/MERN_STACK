@@ -25,7 +25,7 @@ const Form = () => {
     return(
         <Paper className={classes.paper}>
             <form autoComplete='off' noValidate className={classes.form} onSubmit={handleSubmit}>
-                <Typography variant="h6">Creat a Post</Typography>
+                <Typography variant="h6">Create a Post</Typography>
                 <TextField name="creator" variant="outlined" label="creator" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value})} />
                 <TextField name="creator" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})} />
                 <TextField name="creator" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value})} />

@@ -24,6 +24,7 @@ const App = () => {
         <Container maxidth="lg" className={classes.background} >
             <AppBar className={classes.AppBar} color="inherit">
                 <Typography className={classes.heading} variant="h3" align='center'>Memories</Typography>
+                
 
                 </AppBar>
             <Grow in className={classes.main}>
@@ -36,8 +37,6 @@ const App = () => {
                             <Form />
                         </Grid>
                         </Grid>
-
-                        <img className={classes.image} src={memories}  alt="memories" />
                     </Container>
                 </Grow>
         </Container>

@@ -17,9 +17,4 @@ export default makeStyles(() => ({
       main: {
         paddingTop: '100px'
       },
-      background: {
-        paddingTop: '100px',
-        backgroundColor: 'beige',
-        
-      },
 }));

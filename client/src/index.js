@@ -5,7 +5,9 @@ import { legacy_createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
+
 import App from './App';
+import './index.css';
 
 const store = legacy_createStore(reducers, compose(applyMiddleware(thunk)));
 const container = document.getElementById('root');
