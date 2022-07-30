@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js react-scripts start"
+    "start": "nodemon index.js Alexzoo%40$2784start"
   },
   "keywords": [],
   "author": "",
