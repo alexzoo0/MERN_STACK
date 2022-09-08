@@ -10,17 +10,32 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    borderRadius: '20px',
+    backgroundColor: 'beige',
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    
   },
   fileInput: {
     width: '97%',
     margin: '10px 0',
   },
+
   buttonSubmit: {
     marginBottom: 10,
+    borderRadius: '20px',
   },
+
+  clearSubmit: {
+    borderRadius: '20px',
+  },
+
+  input: {
+    margin: '10px',
+    backgroundColor: 'white',
+  },
+
 }));

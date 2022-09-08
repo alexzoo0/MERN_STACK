@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import postRoutes from './routes/post.js';
+import userRoutes from './routes/authentication.js';
+
 
 const app = express();
 
@@ -12,6 +14,7 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true}));
 app.use(cors());
 
 app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://alexzoo:Alexzoo%40$2784@cluster0.iiwud.mongodb.net/?retryWrites=true&w=majority';
 

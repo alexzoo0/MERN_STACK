@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 
+
 import App from './App';
 import './index.css';
 
@@ -15,7 +16,7 @@ const root = createRoot(container);
 
 root.render(
 <Provider store={store}>
-  <App />
+    <App />
 </Provider>,);
 
 

@@ -8,20 +8,26 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { likePost, deletePost } from '../../../actions/posts';
 
+
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
+
+   
 
     return(
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={Post.title} />
             <div className={classes.overlay}>
-                <Typography variant='h6'>{post.creator}</Typography>
+                <Typography variant='h6'>{post.name}</Typography>
                 <Typography variant='body2'>{moment(post.createdAt).fromNow()}</Typography>
             </div>
+            {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
             <div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(post._id)}><MoreHorizIcon fontSize='medium' /></Button>
             </div>
+            )}
             <div className={classes.details}>
                 <Typography variant='body2' color="textSecondary">{post.tags.map((tag) => `${tag} `)}</Typography>
             </div>
@@ -30,20 +36,25 @@ const Post = ({ post, setCurrentId }) => {
                 <Typography variant='h5' gutterBottom>{post.message}</Typography>
             </CardContent>
             <CardActions className={classes.actions}>
-                <Button size='small' color='primary' onClick={() => dispatch(likePost(post._id))}>
+                <Button size='small' color='primary' disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
                     <ThumbUpAltIcon fontSize="small" />
                     Like
                     {post.likeCount}
 
                 </Button>
+                {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
                 <Button size='small' color='primary' onClick={() => {dispatch(deletePost(post._id))}}>
                     <DeleteIcon fontSize="small" />
                     Delete
 
                 </Button>
+
+                )}
             </CardActions>
         </Card>
+        
     )
+
 }
 
 export default Post;

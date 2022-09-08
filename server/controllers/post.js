@@ -29,27 +29,29 @@ export const getPost = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const { title, message, selectedFile, creator, tags } = req.body;
+    const post = req.body;
 
-    const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags })
+    const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
+   
 
     try{
        await newPostMessage.save();
+       
 
         res.status(201).json(newPostMessage);
     }catch(error) {
-        res.status(409).json({ message: error });
+        res.status(409).json({ message: error.message });
     }
 
 }
 
-export const updatePost = async (req, res) => {
+export const updatedPost = async (req, res) => {
     const { id } = req.params;
     const {title, message, creator, selectedFile, tags} = req.body;
 
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`no post with id: ${id}`);
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id};
+    const updatedPost = { title, message, creator, selectedFile, tags, _id: id};
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
@@ -78,6 +80,9 @@ export const likePost = async (req, res) => {
     res.json(updatedPost);
 
 }
+
+
+
 
 export default router;
 

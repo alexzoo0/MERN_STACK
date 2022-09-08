@@ -12,29 +12,31 @@ export const getPosts = () => async (dispatch) => {
     
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (newPost) => async (dispatch) => {
     try {
-        const { data } = await api.createPost(post);
+        const { data } = await api.createPost(newPost);
 
         dispatch({ type: CREATE, payload: data })
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 };
 
 export const updatePost = (id, post) => async (dispatch) => {
     try{
-        const { data } = await api.updatePost(id, post);
+        const { data } = await api.updatedPost(id, post);
 
-        dispatch({ type: UPDATE, payload: data})
+        dispatch({ type: UPDATE, payload: data });
     } catch (error){
-        console.log(error.message);
+        console.log(error);
     }
 };
 
 export const likePost = (id) => async (dispatch) => {
+    const user = JSON.parse(localStorage.getItem('profile'));
+
     try {
-        const { data } = await api.likePost(id);
+        const { data } = await api.likePost(id, user?.token);
 
         dispatch({ type: LIKE, payload: data });
     }catch (error) {
